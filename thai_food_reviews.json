@@ -44,13 +44,14 @@
   {"text": "อร่อยมาก", "label": "positive"},
   {"text": "อร่อยเฉย", "label": "positive"},
   {"text": "หวานละมุน", "label": "positive"},
-    {"text": "สดชื่น", "label": "positive"},
+  {"text": "สดชื่น", "label": "positive"},
 
 
   {"text": "ข้าวแข็งโป๊ก กินไม่ลงเลย", "label": "negative"},
   {"text": "ไม่อร่อย", "label": "negative"},
   {"text": "กินไม่หมด", "label": "negative"},
   {"text": "แดกไม่ลง", "label": "negative"},
+  {"text": "ห่วยแตก", "label": "negative"},
   {"text": "ไม่ผ่านเลย แย่มาก", "label": "negative"},
   {"text": "เส้นเหนียวไปหน่อย", "label": "negative"},
   {"text": "ไม่โอเคเลย ขมมาก", "label": "negative"},
