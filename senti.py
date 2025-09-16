@@ -4,15 +4,16 @@ import torch
 import json
 from rapidfuzz import fuzz, process  # ✅ ใช้ rapidfuzz แทน fuzzywuzzy (เร็วกว่า)
 
-st.title("🍲 Thai Food Review Sentiment Analysis (Dataset + Model Fallback + Fuzzy Match)")
-st.write("ระบบจะตรวจสอบ dataset ก่อน ถ้าไม่พบจะใช้โมเดล FlukeTJ/distilbert-base-thai-sentiment")
-
+# st.title("🍲 Thai Food Review Sentiment Analysis (Dataset + Model Fallback + Fuzzy Match)")
+st.title("🍲 Thai Food Review รีวิวความรู้สึกที่พวกขี้เล้งได้แดกอาหาร")
+# st.write("ระบบจะตรวจสอบ dataset ก่อน ถ้าไม่พบจะใช้โมเดล FlukeTJ/distilbert-base-thai-sentiment")
+st.write("จงทดสอบระบบให้ทีครับ พวกขี้เล้งทั้งหลาย")
 # โหลดโมเดล fallback
 MODEL_NAME = "FlukeTJ/distilbert-base-thai-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
 
-labels = ["negative(ความรู้สึกเป็นลบ) 😞", "neutral(ความรู้สึกเป็นกลาง) 😐", "positive(ความรู้สึกเป็นบวก) 😊"]
+labels = ["negative(ความรู้สึกเป็นเกย์ลบ) 😞", "neutral(ความรู้สึกเป็นเกย์ปานกลาง) 😐", "positive(ความรู้สึกเป็นเกย์บวก) 😊"]
 label2id = {"negative": 0, "neutral": 1, "positive": 2}
 
 # โหลด dataset
@@ -58,7 +59,8 @@ if user_input:
 
     if pred_label is not None:
         confidence = 100.0 if score == 100 else score
-        st.write(f"✅ พบใน dataset (match: '{matched_kw}', similarity: {score:.2f}%)")
+        # st.write(f"✅ พบใน dataset (match: '{matched_kw}', similarity: {score:.2f}%)")
+        st.write(f"✅ พบใน dataset 
     else:
         # 2) ถ้าไม่เจอ → ใช้โมเดล FlukeTJ/distilbert-base-thai-sentiment
         inputs = tokenizer(user_input, return_tensors="pt", truncation=True, padding=True)
@@ -75,10 +77,11 @@ if user_input:
     if confidence < 60:
         st.warning(f"⚠️ ความมั่นใจต่ำ ({confidence:.2f}%) → ผลลัพธ์อาจไม่แม่นยำ")
     else:
-        st.write(f"**ความมั่นใจ:** {confidence:.2f}%")
+        st.write(f"**เปอร์เซ็นต์ความมั่นใจของระบบ:** {confidence:.2f}%")
 
     # ตัวอย่างรีวิวใกล้เคียง
-    st.write("🔎 ตัวอย่างรีวิวจาก dataset ที่คล้ายกัน:")
-    examples = find_similar_examples(user_input)
-    for e in examples:
-        st.write(f"- {e}")
+    # st.write("🔎 ตัวอย่างรีวิวจาก dataset ที่คล้ายกัน:")
+    # examples = find_similar_examples(user_input)
+    # for e in examples:
+    #     st.write(f"- {e}")
+
