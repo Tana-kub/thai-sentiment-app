@@ -60,7 +60,7 @@ if user_input:
     if pred_label is not None:
         confidence = 100.0 if score == 100 else score
         # st.write(f"✅ พบใน dataset (match: '{matched_kw}', similarity: {score:.2f}%)")
-        st.write(f"✅ พบใน dataset 
+        st.write(f"✅ พบใน dataset")
     else:
         # 2) ถ้าไม่เจอ → ใช้โมเดล FlukeTJ/distilbert-base-thai-sentiment
         inputs = tokenizer(user_input, return_tensors="pt", truncation=True, padding=True)
@@ -84,4 +84,5 @@ if user_input:
     # examples = find_similar_examples(user_input)
     # for e in examples:
     #     st.write(f"- {e}")
+
 
